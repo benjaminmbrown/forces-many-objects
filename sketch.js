@@ -14,9 +14,12 @@ function draw() {
   background(51);
   //noise() takes  params value, valRangeMin, valRangeMax, desiredRangeMin,desiredRangeMax
   var wind = createVector(0.01, 0);
-  var gravity = createVector(0, 0.1);
+
 
   for (var i = 0; i < movers.length; i++) {
+      //move gravity into here so we can apply mass of each object to it
+      var gravity = createVector(0, 0.1*movers[i].mass);
+
      movers[i].applyForce(wind);
      movers[i].applyForce(gravity);
      movers[i].update();
